@@ -1,0 +1,55 @@
+/*表格左侧图片和文字*/
+.cartshow table .goodspic,.cartshow table .goodspic+ul{
+	float: left;
+	list-style: none;
+}
+.cartshow table ul li{
+	color:#716b7a;
+}
+.cartshow table ul .goodsname{
+	color:#000;
+}
+/*end表格左侧图片和文字*/
+
+/*加号减号*/
+.cartshow .jia,.cartshow .jian{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+/*end加号减号*/
+
+/*×号*/
+.cartshow table tr td:last-child span:hover{
+	cursor: pointer;
+}
+/*end×号*/
+
+/*总价*/
+.cartshow .totalprice{
+	text-align: right;
+	font-size:25px;
+}
+.cartshow .totalprice span{
+	color:red;
+	font-size: 40px;
+}
+/*end总价*/
+
+/*全选*/
+.choice .choice1{
+	margin-right:10px; 
+}
+/*end全选*/
+
+/*商品数量总计*/
+.choice .choice1~span{
+	margin-left:10px; 
+	font-size: 20px;
+}
+/*商品数量总计*/
+
+/*结算*/
+.cartshow .jiesuan{
+	text-align: right;
+}
+/*end结算*/

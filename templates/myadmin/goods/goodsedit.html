@@ -1,0 +1,122 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+{% block useradd_js %}
+	<script type="text/javascript" src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'myadmin/js/goodsedit.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'myadmin/css/goodsadd.css' %}">
+{% endblock %}
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		商品信息添加
+	</h3>
+	<form id="edit-profile" class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'myadmin_goodsupdate' %}">
+	{% csrf_token %}
+		<fieldset>
+			<input type="hidden" name="goodsid" value="{{ goods.id }}">
+			<legend>添加信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品类别</label>
+				<div class="controls">
+					<select name="typeid" >
+						<option value="0">无</option>
+						{% for list in typelist %}
+						{% if list.id == goods.typeid %}
+						<option value="{{ list.id }}" selected="true">{{ list.row }} {{ list.name }}</option>
+						{% else %}
+						<option value="{{ list.id }}">{{ list.row }} {{ list.name }}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">商品名称</label>
+				<div class="controls">
+					<input type="text" name="name" value="{{ goods.goods }}" class="input-xlarge" id="input01"  /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">生产厂家</label>
+				<div class="controls">
+					<input type="text" name="company" value="{{ goods.company }}" class="input-xlarge" id="input01"  /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="textarea">简介</label>
+				<div class="controls">
+					<textarea class="input-xlarge" name="descr"  id="textarea" rows="4">{{ goods.descr }}</textarea><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">单价</label>
+				<div class="controls">
+					<input type="text" name="price" value="{{ goods.price}}" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-xlarge" id="input01"  placeholder="格式保留两位小数" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="fileInput">上传图片</label>
+				<div class="controls">
+					<input class="input-file" name="imgfile"  id="fileInput" type="file" />
+				</div>
+			</div>						
+			<div class="control-group">
+				<label class="control-label" for="optionsRadios2">状态</label>
+				<div class="controls">
+					<div class="radio">
+						{% if goods.state == 1 %}
+  						<label>
+    						<input type="radio" name="state"  id="optionsRadios2" value="1" checked />
+    						新添加
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="2" />
+    						在售
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="3" />
+    						下架
+  						</label>
+  						{% elif goods.state == 2 %}
+						<label>
+	  						<input type="radio" name="state"  id="optionsRadios2" value="1"  />
+	  						新添加
+						</label>
+						<label>
+	  						<input type="radio" name="state" id="optionsRadios2" value="2" checked />
+	  						在售
+						</label>
+						<label>
+	  						<input type="radio" name="state" id="optionsRadios2" value="3" />
+	  						下架
+						</label>
+						{% else %}
+						<label>
+	  						<input type="radio" name="state"  id="optionsRadios2" value="1"  />
+	  						新添加
+						</label>
+						<label>
+	  						<input type="radio" name="state" id="optionsRadios2" value="2" />
+	  						在售
+						</label>
+						<label>
+	  						<input type="radio" name="state" id="optionsRadios2" value="3" checked />
+	  						下架
+						</label>
+  						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">库存量</label>
+				<div class="controls">
+					<input type="text" name="number" value="{{ goods.store }}" onkeyup="this.value=this.value.replace(/[^\d]/g,'')"  class="input-xlarge" id="input01"  /><span></span>
+				</div>
+			</div>					
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">修改</button> <button type="reset" class="reset">重置</button>
+			</div>
+		</fieldset>
+	</form>
+	<!-- 主体结束 -->
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+
+{% block useradd_js %}
+	<script type="text/javascript" src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'myadmin/js/usersdel.js' %}"></script>
+{% endblock %}
+
+{% block block_usershow %}
+	class="active"
+{% endblock %}
+
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		会员信息浏览
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					帐号
+				</th>
+				<th>
+					姓名
+				</th>
+				<th>
+					性别
+				</th>
+				<th>
+					电话
+				</th>
+				<th>
+					Email
+				</th>
+				<th>
+					状态
+				</th>
+				<th>
+					注册时间
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for list in userslist %}
+			<tr>
+				<td>
+					{{ list.id }}
+				</td>
+				<td>
+					{{ list.username }}
+				</td>
+				<td>
+					{{ list.name }}
+				</td>
+				<td>
+					{% if list.sex == 1 %}
+					男
+					{% else %}
+					女
+					{% endif %}
+				</td>
+				<td>
+					{{ list.phone }}
+				</td>
+				<td>
+					{{ list.email }}
+				</td>
+				<td width="10%">
+					{% if list.state == 1 %}
+					启用
+					{% elif list.state == 2 %}
+					禁用
+					{% else %}
+					后台管理员
+					{% endif %}
+				</td>
+				<td>
+					{{ list.addtime }}
+				</td>
+				<td width="9%">
+					<a href="{% url 'myadmin_usersedit' list.id %}"><button type="button" class="btn btn-primary btn-xs ">修改</button></a>
+					<a href="{% url 'myadmin_usersdel' list.id %}"><button type="button" class="btn btn-danger btn-xs btn-del">删除</button></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>				
+	<div class="pagination">
+		<ul>
+			{% if previous %}
+			<li>
+				<a href="{% url 'myadmin_usersshow' previous %}">&laquo;</a>
+			</li>
+			{% else %}
+			<li class="disabled">
+				<a href="javascript:void(0);">&laquo;</a>
+			</li>
+			{% endif %}
+			{% for pindex in plist %}
+			{% if pindex == pIndex %}
+			<li class="disabled">
+				<a href="{% url 'myadmin_usersshow' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>
+			{% else %}
+			<li>
+				<a href="{% url 'myadmin_usersshow' pindex %}">{{pindex}}</a>&nbsp;&nbsp;
+			</li>
+			{% endif %}
+			{% endfor %}
+			{% if next %}
+			<li>
+				<a href="{% url 'myadmin_usersshow' next %}">&raquo;</a>
+			</li>
+			{% else %}
+			<li class="disabled">
+				<a href="javascript:void(0);">&raquo;</a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+	<!-- 主体结束 -->
+{% endblock %}

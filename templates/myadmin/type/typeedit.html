@@ -1,0 +1,32 @@
+{% extends 'myadmin/base.html' %}
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		商品类别添加
+	</h3>
+	<form id="edit-profile" class="form-horizontal" method="post" action="{% url 'myadmin_typeupdate' %}">
+	{% csrf_token %}
+		<input type="hidden" name="tid" value="{{ typelist.id }}">
+		<fieldset>
+			<legend>添加信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">父类别</label>
+				<div class="controls">
+					<select disabled="disabled">
+						<option>{{ typelist.pid }}</option>						
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">类别名称</label>
+				<div class="controls">
+					<input type="text" name="tname" class="input-xlarge" id="input01" value="{{ typelist.name }}" />
+				</div>
+			</div>					
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">修改</button> <button type="reset" class="btn">重置</button>
+			</div>
+		</fieldset>
+	</form>
+	<!-- 主体结束 -->
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'myweb/userbase.html' %}
+{% load static from staticfiles %}
+
+{% block webuser_js %}
+<script src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'myweb/js/orderviews.js' %}"></script>
+{% endblock %}
+
+{% block webuser_css %}
+<link href="{% static 'myweb/css/orderviews.css' %}" rel="stylesheet"></link>
+{% endblock %}
+
+{% block uorder %}
+class="active"
+{% endblock %}
+
+{% block webuser_body %}
+	<legend>订单浏览</legend>
+	<ul class="state">
+		<li><a href="{% url 'orderviews' 1 %}">全部订单</a></li>
+		<li><a href="{% url 'orderviews' 1 %}?sid=0">未付款</a></li>
+		<li><a href="{% url 'orderviews' 1 %}?sid=1">已发货</a></li>
+		<li><a href="{% url 'orderviews' 1 %}?sid=2">已收货</a></li>
+		<li><a href="{% url 'orderviews' 1 %}?sid=3">已失效</a></li>
+	</ul>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					订单号
+				</th>
+				<th>
+					收件人
+				</th>
+				<th>
+					收货地址
+				</th>
+				<th>
+					邮编
+				</th>
+				<th>
+					联系电话
+				</th>
+				<th>
+					购买时间
+				</th>
+				<th>
+					总金额
+				</th>
+				<th>
+					状态
+				</th>
+				<th>
+				操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for list in orderlist %}
+			<tr>
+				<td>
+					{{ list.id }}
+				</td>
+				<td width="11%">
+					{{ list.linkman }}
+				</td>
+				<td width="20%">
+					{{ list.address }}
+				</td>
+				<td width="15%">
+					{{ list.code }}
+				</td>
+				<td>
+					{{ list.phone }}
+				</td>
+				<td>
+					{{ list.addtime }}
+				</td>
+				<td>
+					{{ list.total }}
+				</td>
+				<td>
+					{{ list.status }}
+				</td>
+				<td width="7%">
+					{% if list.status == '新订单' %}<a href="javascript:void(0)" orderid="{{ list.id }}" class="ocancel">取消</a>{% endif %}
+					<a href="javascript:void(0)" orderid="{{ list.id }}" class="odetail">查看</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="pagination">
+		<ul>
+			{% if sid %}
+				{% if previous %}
+				<li>
+					<a href="{% url 'orderviews' previous %}?sid={{ sid }}">&laquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&laquo;</a>
+				</li>
+				{% endif %}
+				{% for p in plist %}
+				{% if p == pIndex %}
+				<li class="disabled">
+					<a href="{% url 'orderviews' p %}?sid={{ sid }}" >{{ p }}</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="{% url 'orderviews' p %}?sid={{ sid }}">{{ p }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+				{% if next %}
+				<li>
+					<a href="{% url 'orderviews' next %}?sid={{ sid }}">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&raquo;</a>
+				</li>
+				{% endif %}
+			{% else %}
+				{% if previous %}
+				<li>
+					<a href="{% url 'orderviews' previous %}">&laquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&laquo;</a>
+				</li>
+				{% endif %}
+				{% for p in plist %}
+				{% if p == pIndex %}
+				<li class="disabled">
+					<a href="{% url 'orderviews' p %}" >{{ p }}</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="{% url 'orderviews' p %}">{{ p }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+				{% if next %}
+				<li>
+					<a href="{% url 'orderviews' next %}">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&raquo;</a>
+				</li>
+				{% endif %}
+			{% endif %}
+		</ul>
+	</div>	
+{% endblock %}

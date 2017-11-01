@@ -1,0 +1,97 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+
+<!-- 主体css -->
+{% block body_css %}
+	<link rel="stylesheet" href="{% static 'myweb/css/information-body.css' %}">
+{% endblock %}
+
+<!-- 事件js -->
+{% block js_js %}
+	<script src="{% static 'myweb/js/information.js' %}"></script>
+{% endblock %}
+
+<!-- 主要板块 -->
+{% block body_bankuai %}
+		<!-- 购买块 -->
+	<div class="container pan-buy">
+		<div class="panel panel-default pan-buy-cont">
+  			<div class="panel-body">
+    			<div class="row">
+    				<!-- 购买块左侧 -->
+    				<div class="col-md-1 col-xs-12 buy-left">
+    					<div class="row buy-left-cont">
+    						<div class="col-md-12 col-xs-2">
+    							<img src="static/imgs/goods/{{ goods.picname }}" alt="">
+    						</div>
+    						<div class="col-md-12 col-xs-2">
+    							<img src="{% static 'myweb/imgs/buy-2.png' %}" alt="">
+    						</div>
+    						<div class="col-md-12 col-xs-2">
+    							<img src="{% static 'myweb/imgs/buy-3.png' %}" alt="">
+    						</div>
+    						<div class="col-md-12 col-xs-2">
+    							<img src="{% static 'myweb/imgs/buy-4.png' %}" alt="">
+    						</div>
+    						<div class="col-md-12 col-xs-2">
+    							<img src="{% static 'myweb/imgs/buy-5.png' %}" alt="">
+    						</div>
+    					</div>
+    				</div>
+    				<!-- end  购买块左侧-->
+    				<!-- 购买块中间 -->
+    				<div class="col-md-4 col-xs-12 buy-mid">
+    					<img src="static/imgs/goods/{{ goods.picname }}" alt="">
+    				</div>
+    				<!-- end 购买块中间 -->
+    				<!-- 购买块右侧 -->
+                    <form action="{% url 'cartadd' %}" method="post">
+                    {% csrf_token %}
+        				<div class="col-md-5 col-xs-12 col-md-offset-1 buy-right">
+                            <input type="hidden" name="goodsid" value="{{ goods.id }}">
+        					<p class="buy-r-p1">{{ goods.goods }}</p>
+        					<p class="buy-r-p2">{{ goods.descr }}</p>
+        					<div class="buy-r-s">
+        						<span class="buy-right-s1">￥</span><span class="buy-right-s2">{{ goods.price }}</span>
+        					</div>
+        					<hr>
+        					<div class="buy-r-cho1">
+        						<span>颜色</span><a href="#"><div class="cir1"><div class="cir2"></div></div></a>
+        					</div>
+        					<div class="buy-r-cho2">
+        						<span>数量</span><div class="jianBtn"><img src="{% static 'myweb/imgs/fuhao.png' %}" alt=""></div><span class="cho2-num">1</span><div class="jiaBtn"><img src="{% static 'myweb/imgs/fuhao.png' %}" alt=""></div>
+                                <input type="hidden" name="goodsnum" value="1">
+        					</div>
+        					<hr>
+        					<button type="submit" class="btn btn-default buy-r-btn1">加入购物车</button>
+        					<button type="button" class="btn btn-default buy-r-btn2">现在购买</button>
+        				</div>
+                    </form>
+    				<!-- end 购买块右侧 -->
+    			</div>
+  		</div>
+		</div>
+	</div>
+	<!-- end 购买块 -->
+
+	<!-- 详情块 -->
+	<div class="container pan-info">
+		<div class="panel panel-default pan-info-cont">
+	  		<div class="panel-heading pan-info-head">热门商品</div>
+	  		<div class="panel-body">
+	  			<div class="row">
+	  				<div class="col-md-12">
+	  					<img src="{% static 'myweb/imgs/info-1.png' %}" alt="">
+	  				</div>
+	  				<div class="col-md-12">
+	  					<img src="{% static 'myweb/imgs/info-2.png' %}" alt="">
+	  				</div>
+	  				<div class="col-md-12">
+	  					<img src="{% static 'myweb/imgs/info-3.png' %}" alt="">
+	  				</div>
+	  			</div>
+  			</div>
+		</div>
+	</div>
+	<!-- end 详情块 -->
+{% endblock %}

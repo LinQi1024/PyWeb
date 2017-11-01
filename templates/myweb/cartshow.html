@@ -1,0 +1,82 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block body_css %}
+<link href="{% static 'myweb/css/cartshow.css' %}" rel="stylesheet">
+{% endblock %}
+{% block js_js %}
+<script src="{% static 'myweb/js/cartshow.js' %}"></script>
+{% endblock %}
+
+{% block body_bankuai %}
+<div class="container cartshow">
+	<form action="{% url 'orderadd' %}" method="post">
+	{% csrf_token %}
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped table-hover cartinfo">
+				  <tr>
+				  	<th>选择</th>
+				  	<th>商品</th>
+				  	<th>单价(元)</th>
+				  	<th>数量</th>
+				  	<th>小计(元)</th>
+				  	<th>操作</th>
+				  </tr>
+				  {% for goods in request.session.cart.values %}
+				  <tr>
+				  	<td class="checkgoods">
+					  	<input type="checkbox" name="chiocegoods" value="{{ goods.goodsid }}">
+				  	</td>
+				  	<td>
+				  		<a href="{% url 'information' goods.goodsid %}">
+					  		<img class= "goodspic" src="/static/imgs/goods/{{ goods.picname }}" alt="">
+					  		<ul>
+					  			<li class="goodsname">
+					  				<h4>{{ goods.goods }}</h4>
+					  			</li>
+					  			<li>
+					  				{{ goods.descr }}
+					  			</li>
+					  			<li>
+					  				颜色:&nbsp;黑色
+					  			</li>
+					  		</ul>
+				  		</a>
+				  	</td>
+				  	<td >{{ goods.price }}</td>
+				  	<td ><input class="btn btn-default jia" type="button" value="+"><span value="{{ goods.store }}">{{ goods.gnum }}</span><input class="btn btn-default jian" type="button" value="-"></td>
+				  	<td class="xiaoji">{% widthratio  goods.price 1 goods.gnum %}</td>
+				  	<td class="gdel"><span value="{{ goods.goodsid }}" class="glyphicon glyphicon-remove"></span></td>
+				  </tr>
+				  {% endfor %}
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<tr class="choice">
+						<td>
+							<button type="button" class="btn btn-primary choice1" flag='1'>全选</button><button type="button" class="btn btn-primary clear" >清空</button><span>共计:</span><span class="totalnum">0</span><span>商品</span>
+						</td>
+						<td class="totalprice">
+							总计:<span>￥<span>0.00</span></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table jiesuan">
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-danger btn-lg">结算</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

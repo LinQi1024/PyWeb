@@ -1,0 +1,118 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+{% block useradd_js %}
+	<script type="text/javascript" src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'myadmin/js/useradd.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'myadmin/css/useradd.css' %}">
+{% endblock %}
+
+{% block block_useradd %}
+	class="active"
+{% endblock %}
+
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		会员信息添加
+	</h3>
+	<form id="edit-profile" class="form-horizontal" method="post" action="{% url 'myadmin_usersinsert' %}">
+	{% csrf_token %}
+		<fieldset>
+			<legend>添加信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">帐号</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="username"  placeholder="请输入手机号或者邮箱" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">真实姓名</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="name" placeholder="您的姓名" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">密码</label>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="input01" value="" name="passwd" placeholder="请输入6~18位密码" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">确认密码</label>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="input01" value="" name="passwd2" placeholder="再次输入密码" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="optionsRadios1">性别</label>
+				<div class="controls">
+					<div class="radio">
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="1" checked />
+    						男
+  						</label>
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="0" />
+    						女
+  						</label>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">收货地址</label>
+				<div class="controls">
+					<select name="district">
+						<option>-请选择-</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">详细地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="address"  placeholder="请输入详细地址" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="code" placeholder="请输入收货地址的邮编" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="phone" placeholder="请输入您的联系电话" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">Email</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="" name="email" placeholder="请输入您的常用邮箱" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="optionsRadios2">状态</label>
+				<div class="controls">
+					<div class="radio">
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="0" checked />
+    						后台管理员
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="1" />
+    						启用
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="2" />
+    						禁用
+  						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">添加</button> <button type="reset" class="btn">重置</button>
+			</div>
+		</fieldset>
+	</form>
+	<!-- 主体结束 -->
+{% endblock %}

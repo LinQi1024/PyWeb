@@ -1,0 +1,86 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block body_css %}
+	<link rel="stylesheet" href="{% static 'myweb/css/goodslist-body.css' %}">
+{% endblock %}
+{% block js_js %}
+	<script src="{% static 'myweb/js/allGoods.js' %}"></script>
+{% endblock %}
+
+<!-- 主要板块 -->
+{% block body_bankuai %}
+	<!-- 导航3 -->
+	<div class="container nav3">
+		<div class="row">
+			<div class="col-md-10 col-xs-12">
+				<ul>
+					<li class='nav3-li1'><a href="{{ request.path}}?sort=1" >人气商品</a></li>
+					<li><a href="{{ request.path}}?sort=2">销量排序</a></li>
+					<li><a href="{{ request.path}}?sort=3">价格低到高</a></li>
+					<li><a href="{{ request.path}}?sort=4">价格高到低</a></li>	
+					{% for i in type1 %}
+					<li><a href="{% url 'goodslist' i.id %}">{{ i.name }}</a></li>	
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- end 导航3 -->
+
+	<!-- 商品列表 -->
+	<div class="container pan-hot-cont">
+		<div class="panel panel-default pan-hot">
+	  		<div class="panel-body pan-hot-body">
+	  			<div class="row">
+	  				{% for goods in goodslist %}
+	  				<div class="col-xs-6 col-md-3">
+	  					<a href="{% url 'information' goods.id %}" >
+	  						<p class="hot-p0"><span class="badge hot-span">包邮</span></p>
+	  					  	<img src="/static/imgs/goods/{{goods.picname}}" alt="...">
+	  					  	<p class="hot-p1">{{ goods.goods }}</p>
+	  					  	<p class="hot-p2"><small>{{ goods.descr }}</small></p>
+	  					  	<p class="hot-p3">￥{{ goods.price }} <del></del></p>
+	  					  	<button type="button" class="btn btn-default hot-btn">查看详情</button>
+	  					  	<button type="button" class="btn btn-primary hot-btn">加入购物车</button>
+	  					</a>
+	  				</div>
+	  				{% endfor %}
+	  			</div>
+	  		</div>
+		</div>
+	</div>
+	<!-- end 商品列表 -->
+
+	<!-- 在线客服面板 -->
+	<div class="container pan-kefu">
+		<div class="panel panel-default pan-kefu-pan">
+		  <div class="panel-body pan-kefu-body">
+		    <div class="row">
+		    	<a href="#">
+		    		<div class="col-md-3 col-xs-6">
+		    			<img class="pan-kefu-img" src="{% static 'myweb/imgs/kefu.png' %}" alt="">
+		    			<p class="kefu-p1">在线客服</p>
+		    			<p class="kefu-p2">周一至周日9:00-18:00</p>
+		    		</div>
+		    	</a>
+		    	<div class="col-md-3 col-xs-6">
+		    		<img src="{% static 'myweb/imgs/7tian.png' %}" alt="">
+		    		<p class="kefu-p1">7 天无理由退货</p>
+		    		<p class="kefu-p2">7 天无理由退货 请放心购买</p>
+		    	</div>
+		    	<div class="col-md-3 col-xs-6">
+		    		<img src="{% static 'myweb/imgs/15tian.png' %}" alt="">
+		    		<p class="kefu-p1">15 天免费换货</p>
+		    		<p class="kefu-p2">15 天内如遇质量问题 免费换货</p>
+		    	</div>
+		    	<div class="col-md-3 col-xs-6">
+		    		<img src="{% static 'myweb/imgs/baoyou.png' %}" alt="">
+		    		<p class="kefu-p1">满 150 元免邮费</p>
+		    		<p class="kefu-p2">全场使用顺丰快递</p>
+		    	</div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<!-- end 在线客服面板 -->
+{% endblock %}

@@ -1,0 +1,43 @@
+/*商品信息*/
+.goodsinfo tr td{
+	font-size: 16px;
+}
+.goodsinfo td img,.goodsinfo td ul{
+	float: left;
+	list-style: none;
+}
+.goodsinfo td img{
+	height: 80px;
+	width: 80px;
+}
+.goodsinfo td ul{
+	padding-left:10px;
+	width: 200px;
+}
+.goodsinfo td ul span{
+	font-size: 10px;
+	color:#716b7a;
+}
+/*end 商品信息*/
+
+/*按钮*/
+.getgoodinfo div:last-of-type{
+	text-align: right;
+}
+/*end按钮*/
+
+/*总价*/
+.ordertp table{
+	text-align: right;
+	font-size: 23px;
+}
+.ordertp table span{
+	color:red;
+	font-size: 30px;
+}
+/*end 总价*/
+/*表单确认页面的确认按钮*/
+.formconfirm{
+	text-align: right;
+}
+/*end 表单确认页面的确认按钮

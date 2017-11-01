@@ -1,0 +1,95 @@
+{% extends 'myweb/base.html' %}
+{% load static from staticfiles %}
+{% block body_css %}
+<link href="{% static 'myweb/css/orderaddshow.css' %}" rel="stylesheet">
+{% endblock %}
+{% block js_js %}
+<script src="{% static 'myweb/js/orderconfirm.js' %}"></script>
+{% endblock %}
+
+{% block body_bankuai %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<tr>
+					<td>
+						<h1><p class="text-center">订单确认</p></h1>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- 商品和收货信息 -->
+	<div class="row">
+		<div class="col-md-6 goodsinfo">
+			<table class="table table-striped table-hover">
+			  <tr>
+			  	<th>商品</th>
+			  	<th>单价(元)</th>
+			  	<th>数量</th>
+			  	<th>小计(元)</th>
+			  </tr>
+			  {% for goods in order.goods.values %}
+			  <tr>
+			  	<td>
+			  		<img src="/static/imgs/goods/{{ goods.picname }}" alt="">
+			  		<ul>
+			  			<li>
+			  				<h4>{{ goods.goods }}</h4>
+			  			</li>
+			  			<li>
+			  				<span>{{ goods.descr }}</span>
+			  			</li>
+			  			<li>
+			  				<span>颜色:&nbsp;黑色</span>
+			  			</li>
+			  		</ul>
+			  	</td>
+			  	<td >{{ goods.price }}</td>
+			  	<td ><span>{{ goods.gnum }}</span>
+			  	<td class="singeltp">{% widthratio  goods.price 1 goods.gnum %}</td>
+			  </tr>
+			  {% endfor %}
+			</table>
+		</div>
+		<div class="col-md-6 getgoodinfo">
+			{% csrf_token %}
+				<div class="form-group">
+					<label>收件人</label>
+					<input type="text" name="linkman" class="form-control" value="{{ order.getinfo.linkman }}" disabled="disabled">
+				</div>
+				<div class="form-group">
+					<label>联系电话</label>
+					<input type="text" name="phone" class="form-control" value="{{ order.getinfo.phone }}" disabled="disabled">
+				</div>
+				<div class="form-group">
+					<label>收件地址</label>
+					<input type="text" name="address" class="form-control" value="{{ order.getinfo.address }}" disabled="disabled">
+				</div>
+				<div class="form-group">
+					<label>邮编</label>
+					<input type="text" name="code"  class="form-control" value="{{ order.getinfo.code }}" disabled="disabled">
+				</div>
+				<div>
+					<button type="button" class="btn btn-default btn-lg confirm-btn">订单确认</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- end 商品和收货信息 -->
+	<!-- 总计 -->
+	<div class="row">
+		<div class="col-md-6 ordertp">
+			<table class="table">
+				<tr>
+					<td>
+						总计:<span>￥<span>{{ order.total }}</span></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- end 总计 -->
+</div>
+{% endblock %}

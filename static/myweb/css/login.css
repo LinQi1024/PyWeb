@@ -1,0 +1,144 @@
+body{
+	width: 100%;
+	background: url(../imgs/bglogin.png);
+}
+/*登录主体*/
+.login{
+	margin-top: 30px;
+}
+.login-pan{
+	border-radius: 8px;
+}
+/*end 登录主体*/
+
+/*面板内容*/
+.login-body .row div{
+	text-align: center;
+}
+/*end 面板内容*/
+
+/*登录标题*/
+.login-title{
+	margin-top: -20px;
+	padding-bottom: 52px;
+	
+}
+.login-title h4{
+	font-size: 20px;
+}
+/*登录标题*/
+
+/*提示信息*/
+.form-info{
+	position: absolute;
+	top:220px;
+	left:80px;
+	color:red;
+}
+/*end提示信息*/
+/*用户输入框*/
+.login-user{
+	margin-bottom: 15px;
+	position: relative;
+}
+.login-warning{
+	width: 60px;
+	height: 30px;
+	font-size:14px;
+	line-height: 30px;
+	background: #D16D62;
+	position: absolute;
+	right:20px;
+	top:8px;
+	z-index: 5;
+	color:#fff;
+	border-radius: 8px;
+	display: none;
+}
+/*end用户输入框*/
+
+/*记住密码*/
+.login-check{
+	margin-top: 16px;
+	position:relative;
+	padding-left: 0;
+	padding-right:0;
+	font-size: 12px;
+	color:#999;
+}
+.login-check div{
+	position: absolute;
+	left:15px;
+	width: 19px;
+	height:19px;
+	overflow:hidden;
+}
+.login-check span{
+	position: absolute;
+	left:40px;
+}
+.login-check:hover{
+	cursor:pointer;
+}
+.login-check div img{
+	position: relative;
+	width: 100%;
+}
+/*end 记住密码*/
+
+/*注册与忘记密码*/
+.login-resgin{
+	margin-top: 16px;
+	font-size: 12px;
+}
+.login-resgin ul li{
+	list-style: none;
+	float: left;
+	padding-left:9px;
+	padding-right: 9px; 
+	border-left:1px solid #E5E5E5;
+	line-height: 11px;
+	padding-top: 5px;
+}
+.login-resgin ul .login-resgin-li1{
+	border-left:none;
+}
+.login-resgin ul li a{
+	text-decoration: none;
+}
+/*end 注册与忘记密码*/
+
+/*登录按按钮*/
+.login-btn{
+	margin-top: 30px;
+	font-size: 18px;
+
+}
+.login-btn button{
+	background:#99AFE7;
+	height:46px;
+	color:#fff;
+	text-shadow: #4f70b3 0 -1px 0;
+	border:1px solid #B8C5E1;
+	border-radius: 8px;
+	box-shadow: inset 0 1px 2px #7ea1e8;
+}
+/*end 登录按按钮*/
+
+/*尾部*/
+.login-tail-l{
+	color:#999;
+	font-size: 12px;
+}
+.login-tail-l img{
+	margin-left: 15px;
+}
+.login-tail-r a{
+	color:#999;
+	font-size: 12px;
+	text-decoration: none;
+}
+.login-tail-r a:hover{
+	color:#406dd6;
+}
+/*尾部*/

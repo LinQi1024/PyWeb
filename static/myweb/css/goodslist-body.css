@@ -1,0 +1,173 @@
+body{
+    background-color: #EDEDED;
+}
+
+/*热门商品*/
+.pan-hot{
+	margin-top: 30px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.pan-hot-cont{
+	padding-left: 0;
+	padding-right:0;		
+	}
+.pan-hot .pan-hot-body{
+	padding-top:0;
+	padding-bottom: 0;
+	text-align: center;
+}
+.pan-hot .pan-hot-body a{
+	color:black;
+	text-decoration: none;
+}
+.pan-hot-body .row div{
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+}
+.pan-hot .pan-hot-body img{
+	width: 100%;
+}
+.pan-hot-body .hot-p0{
+	height:30px;
+	text-align: right;
+}
+.pan-hot-body .hot-p0 .hot-span{
+	background-color: #FFFBE5;
+	margin-top: 10px;
+	border:1px solid #FFE57A;
+	color:#E6B217;
+	height:26px;
+	width: 68px;
+	line-height: 20px;
+}
+.pan-hot-body .hot-p1{
+	color:#424242;
+	font-size: 16px;
+}
+.pan-hot-body .hot-p2,.pan-hot-body .hot-p3 del{
+	color:#d0d0d0;
+	font-size: 12px;
+	font-weight: normal;
+}
+.pan-hot-body .hot-p3{
+	color:#de4037;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: 700;
+}
+.pan-hot-body .hot-btn{
+	display: none;
+}
+/*end热门商品*/
+
+/*在线客服面板*/
+.pan-kefu{
+	padding-left: 0;
+	padding-right:0;
+	text-align: center;
+}
+.pan-kefu .pan-kefu-pan{
+	border-radius:8px; 
+}
+.pan-kefu-body .row div{
+	padding-top: 19px;
+	padding-bottom: 5px;
+}
+.pan-kefu-body a{
+	text-decoration: none;
+}
+.pan-kefu .kefu-p1{
+	color: #000;
+	font-size: 15px;
+	line-height: 25px;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+.pan-kefu .kefu-p2{
+	color: #A8A8A8;
+	font-size: 12px;
+	line-height: 24px;
+}
+
+/*end在线客服*/
+
+/*分辨率小于767*/
+@media(max-width: 767px){
+	/*导航3*/
+	.nav3 ul{
+		padding:0;
+		border-top:1px solid #c7c7c7;
+	}
+	.nav3 ul li{
+		list-style: none;
+		float: left;
+		padding: 15px;
+	}
+	.nav3 ul li a{
+		font-size:10px;
+		color:black;
+	}
+	/*end 导航3*/
+
+	/*热门商品*/
+	.pan-hot-body .row div{
+		height: 340px;
+	}
+	/*end热门商品*/
+}
+/* end 分辨率小于767*/
+
+/*分辨率大于768*/
+@media(min-width: 768px){
+	/*导航3*/
+	.nav3{
+		border-top:1px solid #D8D8D8;
+		padding-top: 24px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.nav3 .row div{
+		padding-left: 0;
+	}
+	.nav3 .row div ul{
+		padding-left: 0;
+	}
+	.nav3 ul li{
+		float: left;
+		list-style:none;
+		padding-left: 21px;
+		padding-right: 21px;
+		border-left: 2px solid #C7C7C7;
+		line-height: 2px;
+	}
+	.nav3 ul .nav3-li1{
+		border-left:none;
+	}
+	.nav3 ul li a{
+		font-size: 12px;
+		color: #999;
+		text-decoration: none;
+	}
+	/*.nav3 ul .nav3-li1 a{
+		color: #5683EA;
+	}*/
+	/*end 导航3*/
+
+	/*热门商品*/
+	.pan-hot-body .row div{
+		height: 390px;
+	}
+	/*end热门商品*/
+}
+/* end分辨率大于768*/
+
+/*分辨率大于1300*/
+@media(min-width: 1300px){
+	/*热卖商品块*/
+	.pan-hot-body .row div{
+		height: 410px;
+	}
+	/*end 热卖商品块*/
+}
+/* end 分辨率大于1300*/

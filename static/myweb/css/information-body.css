@@ -1,0 +1,294 @@
+body{
+    background-color: #EDEDED;
+}
+
+/*详情页*/
+.pan-info{
+	padding-left: 0;
+	padding-right:0;		
+	}
+.panel .pan-info-head{
+	height:60px;
+	padding-top: 16px;
+	padding-left: 23px;
+	font-size: 20px;
+	color:#333;
+	background: linear-gradient(#fbfbfb,#ececec);
+}
+.pan-info .panel-body img{
+	width:100%;
+}
+/*end 详情页*/
+
+/*分辨率小于767*/
+@media(max-width: 767px){
+	/*购买块*/
+	.pan-buy{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.pan-buy .buy-left-cont div{
+		width: 60px;
+		height: 60px;
+		padding-left: 0;
+		padding-right: 0;
+		margin:10px;
+		border:1px solid #F0F0F0;
+		border-radius: 8px; 
+	}
+	.pan-buy .buy-mid img{
+		width:100%;
+	}
+	.buy-right .buy-r-p1{
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.buy-right .buy-r-p2{
+		font-size: 14px;
+		color: #bdbdbd;
+	}
+	.buy-right .buy-r-s {
+		color: #d44d44;
+	    font-weight: 700;
+	    font-size: 16px;
+	}
+	.buy-r-cho1{
+		margin-top: 37px;
+		color:#8d8d8d;
+	}
+	.buy-r-cho1 .cir1{
+		width: 36px;
+		height: 36px;
+		border:3px solid #B2B2B2;
+		border-radius:50%; 
+		position: relative;
+		left:50px;
+		top:-30px;
+	}
+	.buy-r-cho1 .cir2{
+		width: 26px;
+		height: 26px;
+		border:1px solid #E6E6E6;
+		border-radius:50%;
+		position: absolute;
+		left:2px;
+		top:2px;
+	}
+	.buy-r-cho2{
+		color:#8d8d8d;
+		position: relative;
+	}
+	.buy-r-cho2 div{
+		width: 41px;
+		height: 41px;
+		overflow: hidden;
+	}
+	.buy-r-cho2 .jianBtn{
+		position: absolute;
+		top:-10px;
+		left:45px;
+	}
+	.buy-r-cho2 .jianBtn:hover{
+		cursor: pointer;
+	}
+	.jianBtn img{
+		position: absolute;
+		top:-60px;
+	} 
+	.buy-r-cho2 .jiaBtn{
+		position: absolute;
+		top:-10px;
+		left:140px;
+	}
+	.buy-r-cho2 .jiaBtn:hover{
+		cursor: pointer;
+	}
+	.buy-r-cho2 .cho2-num{
+		position: absolute;
+		font-size: 16px;
+		left:110px;
+	}
+	.buy-r-btn1{
+		width: 143px;
+		height: 48px;
+		border:1px solid #5C81E3;
+		background-color: #5c85e5;
+		color:#fff;
+		border-radius: 8px;
+		margin-top: 10px;
+	}
+	.buy-r-btn1:hover{
+		background-color: #7598E8;
+		color:#fff;
+		border-color:#5C81E3;
+	}
+	.buy-r-btn2{
+		width: 143px;
+		height: 48px;
+		border:1px solid #E0E0E0;
+		background-color: #FBFBFB;
+		color:#8c8c8c;
+		border-radius: 8px;
+		margin-left: 20px;
+		margin-top: 10px;
+	}
+	.buy-r-btn2:hover{
+		color:#8c8c8c;
+	}
+	/*end 购买块*/
+}
+/*end 分辨率小于767*/
+
+/*分辨率大于768*/
+@media(min-width: 768px){
+	/*购买块*/
+	.pan-buy{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.pan-buy-cont{
+		border-radius: 8px;
+	}
+	.pan-buy .buy-left{
+		margin-left: 60px;
+		margin-top: 35px;
+		margin-bottom:35px;
+	}
+	.pan-buy .buy-left-cont div{
+		width: 78px;
+		height:78px;
+		margin-top: 10px;
+		margin-bottom:10px;
+		border:1px solid #F0F0F0;
+		padding-left: 0px;
+		padding-right: 0px;
+		border-radius: 8px; 
+	}
+	.buy-left-cont div img{
+		width:100%;
+		border-radius: 8px; 
+	}
+	.buy-left-cont div:hover{
+		cursor: pointer;
+	}
+
+	.pan-buy .buy-mid{
+		margin-top: 45px;
+
+	}
+	.pan-buy .buy-right{
+		margin-top: 100px;
+	}
+	.buy-right .buy-r-p1{
+		font-size: 24px;
+		color:#000;
+	}
+	.buy-right .buy-r-p2{
+		font-size: 14px;
+		color:#bdbdbd;
+	}
+	.buy-right .buy-right-s1{
+		color: #d44d44;
+	    font-weight: 700;
+	    font-size: 16px;
+	    line-height: 20px;
+	    text-align: right;
+	}
+	.buy-right .buy-right-s2{
+		color: #d44d44;
+	    font-weight: 700;
+	    font-size: 24px;
+	    line-height: 20px;
+	    text-align: right;
+	}
+	.buy-right .buy-r-s{
+		position: absolute;
+		right:40px;
+		top:60px;
+	}
+	.buy-r-cho1{
+		margin-top: 37px;
+		color:#8d8d8d;
+	}
+	.buy-r-cho1 .cir1{
+		width: 36px;
+		height: 36px;
+		border:3px solid #B2B2B2;
+		border-radius:50%; 
+		position: relative;
+		left:50px;
+		top:-30px;
+	}
+	.buy-r-cho1 .cir2{
+		width: 26px;
+		height: 26px;
+		border:1px solid #E6E6E6;
+		border-radius:50%;
+		position: absolute;
+		left:2px;
+		top:2px;
+	}
+	.buy-r-cho2{
+		color:#8d8d8d;
+		position: relative;
+	}
+	.buy-r-cho2 div{
+		width: 41px;
+		height: 41px;
+		overflow: hidden;
+	}
+	.buy-r-cho2 .jianBtn{
+		position: absolute;
+		top:-10px;
+		left:45px;
+	}
+	.buy-r-cho2 .jianBtn:hover{
+		cursor: pointer;
+	}
+	.jianBtn img{
+		position: absolute;
+		top:-60px;
+	} 
+	.buy-r-cho2 .jiaBtn{
+		position: absolute;
+		top:-10px;
+		left:140px;
+	}
+	.buy-r-cho2 .jiaBtn:hover{
+		cursor: pointer;
+	}
+	.buy-r-cho2 .cho2-num{
+		position: absolute;
+		font-size: 16px;
+		left:110px;
+	}
+	.buy-r-btn1{
+		width: 143px;
+		height: 48px;
+		border:1px solid #5C81E3;
+		background-color: #5c85e5;
+		color:#fff;
+		border-radius: 8px;
+		margin-top: 10px;
+	}
+	.buy-r-btn1:hover{
+		background-color: #7598E8;
+		color:#fff;
+		border-color:#5C81E3;
+	}
+	.buy-r-btn2{
+		width: 143px;
+		height: 48px;
+		border:1px solid #E0E0E0;
+		background-color: #FBFBFB;
+		color:#8c8c8c;
+		border-radius: 8px;
+		margin-left: 20px;
+		margin-top: 10px;
+	}
+	.buy-r-btn2:hover{
+		color:#8c8c8c;
+	}
+	/*end 购买块*/
+}
+/*end 分辨率大于768*/

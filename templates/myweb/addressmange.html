@@ -1,0 +1,51 @@
+{% extends 'myweb/userbase.html' %}
+{% load static from staticfiles %}
+
+{% block webuser_js %}
+<script src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'myweb/js/addressmanage.js' %}"></script>
+{% endblock %}
+
+{% block webuser_css %}
+<link href="{% static 'myweb/css/usinfoch.css' %}" rel="stylesheet"></link>
+{% endblock %}
+
+{% block uaddr %}
+class="active"
+{% endblock %}
+
+{% block webuser_body %}
+	<form id="edit-profile" class="form-horizontal" method="post" action="{% url 'saveaddr' %}">
+	{% csrf_token %}
+		<fieldset>
+			<legend>收货地址管理</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">收货地址</label>
+				<div class="controls">
+					{% for dis in district %}
+					<select name="district">
+						{% for d in dis  %}
+						{% if d.name in addrlist %}
+						<option value="{{ d.name }}" pathid="{{d.id}}" selected="selected">{{ d.name }}</option>
+						{% else %}
+						<option value="{{ d.name }}" pathid="{{d.id}}">{{ d.name }}</option>
+						{% endif %}
+						{% endfor %}
+					}
+					</select>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">详细地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ addrdetail }}" name="address"/><span></span>
+				</div>
+			</div>
+			
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">保存</button> <button type="reset" class="btn">重置</button>
+			</div>
+		</fieldset>
+	</form>
+{% endblock %}

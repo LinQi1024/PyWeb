@@ -1,0 +1,191 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+{% block useradd_js %}
+	<script type="text/javascript" src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'myadmin/js/ordersedit.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'myadmin/css/ordersedit.css' %}">
+	<link rel="stylesheet" href="{% static 'myweb/css/orderviews.css' %}">
+{% endblock %}
+
+{% block block_ordershow %}
+	class="active"
+{% endblock %}
+
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		订单信息浏览
+	</h3>
+	<ul class="state">
+		<li><a href="{% url 'myadmin_ordersshow' 1 %}">全部订单</a></li>
+		<li><a href="{% url 'myadmin_ordersshow' 1 %}?sid=0">未付款</a></li>
+		<li><a href="{% url 'myadmin_ordersshow' 1 %}?sid=1">已发货</a></li>
+		<li><a href="{% url 'myadmin_ordersshow' 1 %}?sid=2">已收货</a></li>
+		<li><a href="{% url 'myadmin_ordersshow' 1 %}?sid=3">已失效</a></li>
+	</ul>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					会员id
+				</th>
+				<th>
+					联系人
+				</th>
+				<th>
+					地址
+				</th>
+				<th>
+					邮编
+				</th>
+				<th>
+					电话
+				</th>
+				<th>
+					购买时间
+				</th>
+				<th>
+					总金额
+				</th>
+				<th>
+					状态
+				</th>
+				<th>
+					操作
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for list in orderlist %}
+			<tr>
+				<td>
+					{{ list.id }}
+				</td>
+				<td>
+					{{ list.uid }}
+				</td>
+				<td>
+					{{ list.linkman }}
+				</td>
+				<td width="16%">
+					{{ list.address }}
+				</td>
+				<td>
+					{{ list.code }}
+				</td>
+				<td>
+					{{ list.phone }}
+				</td>
+				<td>
+					{{ list.addtime }}
+				</td>
+				<td>
+					{{ list.total }}
+				</td>
+				<td>
+					<span>{{ list.status }}</span>
+				</td>
+				<td>
+					<a href="{% url 'myadmin_ordersdetail' list.id %}">查看详情</a>
+					<a class="statusedit" href="#">修改状态</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>				
+	<div class="pagination">
+		<ul>
+			{% if sid %}
+				{% if previous %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' previous %}?sid={{ sid }}">&laquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&laquo;</a>
+				</li>
+				{% endif %}
+				{% for p in plist %}
+				{% if p == pIndex %}
+				<li class="disabled">
+					<a href="{% url 'myadmin_ordersshow' p %}?sid={{ sid }}" >{{ p }}</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' p %}?sid={{ sid }}">{{ p }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+				{% if next %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' next %}?sid={{ sid }}">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&raquo;</a>
+				</li>
+				{% endif %}
+			{% else %}
+				{% if previous %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' previous %}">&laquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&laquo;</a>
+				</li>
+				{% endif %}
+				{% for p in plist %}
+				{% if p == pIndex %}
+				<li class="disabled">
+					<a href="{% url 'myadmin_ordersshow' p %}" >{{ p }}</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' p %}">{{ p }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+				{% if next %}
+				<li>
+					<a href="{% url 'myadmin_ordersshow' next %}">&raquo;</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="javascript:void(0);">&raquo;</a>
+				</li>
+				{% endif %}
+			{% endif %}
+		</ul>
+	</div>
+	<div class="status">
+		<div class="control-group" >
+			<label class="control-label" for="optionsRadios2"><h3>状态选择</h3></label>
+			<div class="controls">
+				<div class="radio">
+					<label>
+					<input type="radio" name="state" id="optionsRadios2" value="0" />
+					新订单
+					</label>
+					<label>
+					<input type="radio" name="state" id="optionsRadios2" value="1" />
+					已发货
+					</label>
+					<label>
+					<input type="radio" name="state" id="optionsRadios2" value="2" />
+					已收货
+					</label>
+					<label>
+					<input type="radio" name="state" id="optionsRadios2" value="3" />
+					无效订单
+					</label>
+				</div>
+			</div>
+			<button class="btn btn-primary">确定</button>	
+		</div>	
+	</div>
+	<!-- 主体结束 -->
+{% endblock %}

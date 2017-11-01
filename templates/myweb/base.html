@@ -1,0 +1,208 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Smartisan</title>
+	<link rel="shortcut icon" href="{% static 'myweb/imgs/favicon.ico' %}">
+	<link href="{% static 'myweb/css/bootstrap.min.css' %}" rel="stylesheet">
+   	<script src="{% static 'myweb/js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'myweb/js/bootstrap.min.js' %}"></script>
+    <!-- 弹出的购物车css -->
+    <link rel="stylesheet" href="{% static 'myweb/css/cart.css' %}">
+    <!-- 头部css js -->
+    <link rel="stylesheet" href="{% static 'myweb/css/header.css' %}">
+    <script src="{% static 'myweb/js/head.js' %}"></script>
+    <!-- 主体css -->
+    {% block body_css %}
+    {% endblock %}
+    <!-- 尾部css -->
+    <link rel="stylesheet" href="{% static 'myweb/css/footer.css' %}">
+    <!-- 事件js -->
+    {% block js_js %}
+    {% endblock %}
+</head>
+<body>	
+	<!-- 导航1 -->
+	<nav class="navbar nav1 navbar-inverse">
+	 	<div class="container-fluid nav1-con">
+			<!-- 导航头 -->
+	    	<div class="navbar-header nav1-hd">
+	     	 	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	       			<span class="sr-only">Toggle navigation</span>
+	        		<span class="icon-bar"></span>
+	        		<span class="icon-bar"></span>
+	        		<span class="icon-bar"></span>
+	     		</button>
+	      		<a class="navbar-brand" href="#"><img src="{% static 'myweb/imgs/global-logo.png' %}" width="50px" alt=""></a>
+	    	</div>
+			<!-- end 导航头 -->
+			<!-- 导航体 -->
+	    	<div class="collapse navbar-collapse nav1-body" id="bs-example-navbar-collapse-1">
+	    		<!-- 导航体左侧 -->
+	      		<ul class="nav navbar-nav nav1-ul">
+	        		<li><a href="{% url 'index' %}">在线商城</a></li>
+	        		<li><a href="#">坚果Pro</a></li>
+	        		<li><a href="#">Smartisan M1 / M1L</a></li>
+	        		<li><a href="#">Smartisan OS</a></li>
+	        		<li><a href="#">欢喜云</a></li>
+	        		<li><a href="#">应用下载</a></li>
+	        		<li><a href="#">官方论坛</a></li>
+	     		</ul>
+				<!-- end 导航体左侧 -->
+				<!-- 导航体右侧 -->
+	      		<ul class="nav navbar-nav navbar-right nav1-right">
+	      	  		{% if request.session.userid %}
+	      	  		<li class="nav1-right-li"><a href="{% url 'userinfo' %}"><img src="{% static 'myweb/imgs/user.png' %}" alt=""></a></li>
+	      	  		<a href="{% url 'loginout' %}" class="logout">注销</a>
+	      	  		{% else %}
+					<li class="nav1-right-li"><a href="{% url 'login' %}"><img src="{% static 'myweb/imgs/user.png' %}" alt=""></a></li>
+					{% endif %}
+	      	  		<li><a href="{% url 'cartshow' %}" ><img src="{% static 'myweb/imgs/cart.png' %}" alt="">&nbsp;<span class="badge">{{ request.session.cart|length }}</span></a></li>
+	      		</ul>
+	      		<!-- end 导航体右侧 -->
+	    	</div>
+	    	<!-- end 导航体 -->
+	    	<div class="cart cart-dis" style="overflow:auto;">
+	    		<img src="{% static 'myweb/imgs/cart-cart.png' %}" alt="">
+	    		<h3>购物车为空</h3>
+	    		<p>您还没有选购任何商品,现在前往商城选购吧!</p>
+	    	</div>
+	  	</div>
+	</nav>
+	<!-- end 导航1 -->
+
+	<!-- 导航2 -->
+	<div class="container-fluid">
+		<div class="nav2">
+			<div class="row">
+				<div class="col-md-10 col-xs-12 nav2-con">
+					<ul>
+						<li><a href="{% url 'index' %}" class="nav2-active">首页</a></li>
+						<li class="phone"><a href="{% url 'goodslist' 2 %}">手机</a></li>
+						<li><a href="{% url 'goodslist' 3 %}">衣服</a></li>
+						<li><a href="{% url 'goodslist' 4 %}">官方配件</a></li>	
+						<li><a href="{% url 'goodslist' 50 %}">电脑</a></li>
+						<li><a href="{% url 'goodslist' 52 %}">相机</a></li>
+						<li><a href="{% url 'goodslist' 0 %}">全部商品</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="phone-dis">
+			<ul>
+				<li class="li-1">
+					<a href=""><img src="{% static 'myweb/imgs/pro.png' %}" alt=""></a>
+					<p class="p1">坚果Pro</p>
+					<p class="p2">￥1,499.00起</p>
+				</li>
+				<li>
+					<a href=""><img src="{% static 'myweb/imgs/M1.png' %}" alt=""></a>
+					<p class="p1">Smartisan M1 / M1L</p>
+					<p class="p2">￥2,499.00起</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- end 导航2 -->
+	
+	<!-- 主要板块 -->
+    {% block body_bankuai %}
+    {% endblock %}
+	
+	<!-- 回到顶部 -->
+	<div class="back-top">
+	</div>
+	<!-- end 回到顶部 -->
+
+	<!-- footer -->
+	<hr>
+	<footer class="footer ">
+	    <div class="container">
+	      	<div class="row footer-top ">
+	      		<div class="col-md-8  col-xs-12 footer-top-left">
+	          		<div class="row about ">
+	            		<div class="col-md-2 col-xs-4">
+	              			<h4>订单服务</h4>
+	              			<ul class="list-unstyled">
+	                			<li><a href="#">购买指南</a></li>
+	                			<li><a href="#">支付方式</a></li>
+	                			<li><a href="#">送货政策</a></li>
+	              			</ul>
+	            		</div>
+	            		<div class="col-md-2 col-xs-4">
+	              			<h4>服务支持</h4>
+	              			<ul class="list-unstyled">
+	               				<li><a href="#">售后服务</a></li>
+	                			<li><a href="#">维修门店</a></li>
+	                			<li><a href="#">零售门店</a></li>
+	              			</ul>
+	            		</div>
+	            		<div class="col-md-2 col-xs-4">
+	             			<h4>自助服务</h4>
+	              				<ul class="list-unstyled">
+	                				<li><a href="#">热点资讯</a></li>
+	                				<li><a href="#">预约购买</a></li>
+	                				<li><a href="#">订单物流</a></li>
+	              				</ul>
+	            		</div>
+	            		<div class="col-md-2 col-xs-4">
+	              			<h4>媒体中心</h4>
+	              			<ul class="list-unstyled">
+	                			<li><a href="#">新闻动态</a></li>
+	                			<li><a href="#">官方视频</a></li>
+	                			<li><a href="#">图片资源</a></li>
+	              			</ul>
+	            		</div>
+	            		<div class="col-md-2 col-xs-4">
+	              			<h4>关于公司</h4>
+	              			<ul class="list-unstyled">
+	                			<li><a href="#">公司简介</a></li>
+	                			<li><a href="#">加入我们</a></li>
+	                			<li><a href="#">联系我们</a></li>
+	              			</ul>
+	            		</div>
+	            		<div class="col-md-2 col-xs-4">
+	              			<h4>关注我们</h4>
+	              			<ul class="list-unstyled">
+	                			<li><a href="#">新浪微博</a></li>
+	                			<li><a href="#">官方微信</a></li>
+	                			<li><a href="#">官方贴吧</a></li>
+	              			</ul>
+	            		</div>
+	          		</div>
+	  			</div>
+	        	<div class="col-md-4 col-xs-12 footer-top-right">
+	          		<h3>400-619-0909</h3>
+	          		<p>周一至周日 9:00-18:00 （仅收市话费）</p>
+	          		<button type="button" class="btn btn-default"><img src="{% static 'myweb/imgs/info-que.png' %}">在线帮助</button>
+	        	</div>
+	    	</div>
+	    	<hr>
+	    	<div class="row footer-bottom">
+	    		<div class="btn-group dropup">
+  					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><img src="{% static 'myweb/imgs/flag.png' %}">中文<span class="caret"></span>
+  					</button>
+  					<ul class="dropdown-menu">
+    					<li>英文</li>
+  					</ul>
+				</div>
+	    		<ul class="list-inline footer-bottom-ul1">
+	          		<li class="footer-bottom-li1">Copyright &copy; 2017, Smartisan Digital Co., Ltd. All Rights Reserved.北京锤子数码科技有限公司</li>
+	          		<li><a href="#" target="_blank">法律声明</a></li>
+	          		<li><a href="#" target="_blank">隐私条款</a></li>
+	          		<li><a href="#" target="_blank">开发者中心</a></li>
+	        	</ul>
+	       		<ul class="list-inline footer-bottom-ul2">
+	          		<li><a href="">&nbsp;京ICP备14041720号-1</a></li>
+	          		<li><a href="">京ICP证140622号</a></li>
+	          		<li><a href="">京公网安备11010502025474</a></li>
+	        	</ul>
+	      	</div>
+	    </div>
+	</footer>
+	<!-- end footer -->
+</body>
+</html>

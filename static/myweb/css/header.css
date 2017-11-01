@@ -1,0 +1,181 @@
+/*分辨率小于767*/
+@media(max-width: 767px){
+	/*导航1*/
+	.nav1{
+		background: #090909;
+	}
+	.nav1 .nav1-hd{
+		overflow: hidden;
+	}
+	.nav1-hd img{
+		position: relative;
+		top:-10px;
+	}
+	.cart-dis{
+		display: none;
+		position: relative;
+		padding-top: 90px;
+		text-align:center;
+		left:-10px;
+	}
+	/*end 导航1*/
+	
+	/*导航2*/
+	.nav2-con ul{
+		padding:0;
+	}
+	.nav2-con ul li{
+		list-style: none;
+		float: left;
+		padding: 15px;
+	}
+	.nav2-con ul li a{
+		color:black;
+	}
+	.phone-dis{
+		display: none;
+	}
+	/*end 导航2*/
+}
+/*end 分辨率小于767*/
+
+/*分辨率大于768*/
+@media(min-width: 768px){
+	/*导航1*/
+	.nav1{
+		background: #090909;
+	}
+	.nav1 .nav1-hd{
+		overflow: hidden;
+	}
+	.nav1-hd img{
+		position: relative;
+		top:-10px;
+	}
+	.cart-dis{
+		display: none;
+		position: absolute;
+		right: -10px;
+		padding-top: 90px;
+		text-align: center;
+		z-index: 10;
+	}
+	/*end 导航1*/
+
+	/*导航2*/
+	.nav2{				
+		position: relative;
+	}
+	.nav2 ul li{
+		list-style: none;
+		float: left;
+		padding-left: 21px;
+		padding-right: 21px;
+		padding-top: 14px;
+		padding-bottom:34px; 
+	}
+	.nav2 ul li a{
+		text-decoration: none;
+		color:#858585;
+	}
+	.nav2 .nav2-con{
+		margin-left:14px;
+	}
+	.nav2 .nav2-active{
+		color: #666666;
+		font-weight: bold;
+	}
+	.phone-dis{			
+		height:332px;
+		background: #F5F5F5;
+		display: none;
+		padding-top: 30px;
+		padding-left: 450px;
+		box-sizing:border-box;
+	}
+	.phone-dis ul {
+		margin: 0;
+	}
+	.phone-dis ul li{
+		text-align: center;
+		list-style: none;
+		float: left;
+		margin: 0;
+	}
+	.phone-dis ul .li-1{
+		border-right: 1px solid #EBEBEB;
+	}
+	.phone-dis ul li .p1{
+		margin-top: 10px;
+		font-size:12px;
+	}
+	.phone-dis ul li .p2{
+		color: #D44D44;
+		font-weight: bold;
+	}
+	/*end 导航2*/
+}
+/*end 分辨率大于768*/
+
+/*分辨率大于1300*/
+@media(min-width: 1300px){
+	/*导航1*/
+	/*导航1总体*/
+	.nav1{
+		min-height: 100px;
+		background: #090909;
+	}
+	/*导航1内容总体*/
+	.nav1-con{
+		margin-top: 20px;
+		padding-left:64.5px; 
+		padding-right:64.5px; 
+	}
+	/*导航1头部*/
+    .nav1 .nav1-hd{
+    	overflow: hidden;
+    }
+    /*导航1头部图片*/
+    .nav1-hd img{
+		position: relative;
+		top:-10px;
+	}
+	/*导航1主体*/
+	.nav1-body{
+		margin-top: 5px;
+	}
+	/*导航1主体左部分*/
+	.nav1-ul{
+		margin-left: 162px;
+		
+	}
+	.nav1 .nav1-ul li a{
+		color: #c8c8c8;
+		padding-left:25px;
+		padding-right:25px;
+	}
+	/*导航1主体右部分*/
+	.nav1 .nav1-right .nav1-right-li{
+		border-left: 1px solid #242424;
+		height:20px;
+		margin-top: 15px;
+		padding-left: 50px;
+		padding-right: 20px;
+	}
+	.nav1 .nav1-right .nav1-right-li a{
+		padding:0px;
+	}
+	.cart-dis{
+		display: none;
+		position: absolute;
+		right: 40px;
+		padding-top: 90px;
+		text-align: center;
+		z-index: 10;
+	}
+	.logout{
+		position:absolute;right:40px;top:40px
+	}
+	/*end 导航1*/
+}
+/*end 分辨率大于1300*/

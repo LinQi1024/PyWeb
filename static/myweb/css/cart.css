@@ -1,0 +1,41 @@
+/*cart弹出样式*/
+.cart{
+  width: 360px;
+  height: 300px;
+  background-color: #fff;
+  position: absolute;
+  border: 4px solid #fff;
+  border-radius: 8px;
+}
+
+.cart:after,.cart:before {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  left: 80%;
+  position: absolute;
+  width: 0;
+
+}
+
+.cart:after {
+  border-width: 13px;
+  border-bottom-color: #fff;
+  top: -21px;
+
+}
+
+.cart:before {
+  border-width: 14px;
+  border-bottom-color: #fff;
+  top: -30px;
+}
+.cart-dis h3{
+	font-size: 18px;
+	color:#333;
+}
+.cart-dis p{
+	color:#C1C1C1;
+	font-size: 8px;
+}
+/*end cart弹出样式*/

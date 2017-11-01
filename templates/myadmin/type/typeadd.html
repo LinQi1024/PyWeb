@@ -1,0 +1,43 @@
+{% extends 'myadmin/base.html' %}
+
+{% block block_typeadd %}
+	class='active'
+{% endblock %}
+
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		商品类别添加
+	</h3>
+	<form id="edit-profile" class="form-horizontal" method="post" action="{% url 'myadmin_typeinsert' %}">
+	{% csrf_token %}
+		<fieldset>
+			<legend>添加信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">父类别</label>
+				<div class="controls">
+					<select name="fid" >
+						<option value="0">无</option>
+						{% for list in typelist %}
+						{% if list.row == 3 %}
+						<option value="{{ list.id }}" disabled>{{ list.line }} {{ list.name }}</option>
+						{% else %}
+						<option value="{{ list.id }}">{{ list.line }} {{ list.name }}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">类别名称</label>
+				<div class="controls">
+					<input type="text" name="cid" class="input-xlarge" id="input01" />
+				</div>
+			</div>					
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">添加</button> <button type="reset" class="btn">重置</button>
+			</div>
+		</fieldset>
+	</form>
+	<!-- 主体结束 -->
+{% endblock %}

@@ -1,0 +1,14 @@
+.status{
+	display:none;
+	background: #F5F5F5;
+	position: absolute;
+	top:150px;
+	right:400px;
+	width: 300px;
+	max-height: 500px;
+	border:2px solid #D4D4D4;
+}
+.status .control-group{
+	width:110px;
+	margin:0 auto;
+}

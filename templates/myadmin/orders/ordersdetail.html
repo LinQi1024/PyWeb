@@ -1,0 +1,57 @@
+{% extends 'myadmin/base.html' %}
+
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		订单详情
+	</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					id
+				</th>
+				<th>
+					订单id
+				</th>
+				<th>
+					商品id
+				</th>
+				<th>
+					商品名称
+				</th>
+				<th>
+					单价
+				</th>
+				<th>
+					数量
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for goods in detail %}
+			<tr>
+				<td>
+					{{ goods.id }}
+				</td>
+				<td>
+					{{ goods.orderid }}
+				</td>
+				<td>
+					{{ goods.goodsid }}
+				</td>
+				<td>
+					{{ goods.name }}
+				</td>
+				<td>
+					{{ goods.price }}
+				</td>
+				<td>
+					{{ goods.num }}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>				
+	<!-- 主体结束 -->
+{% endblock %}

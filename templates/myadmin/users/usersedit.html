@@ -1,0 +1,148 @@
+{% extends 'myadmin/base.html' %}
+{% load static from staticfiles %}
+{% block useradd_js %}
+	<script type="text/javascript" src="{% static 'myadmin/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'myadmin/js/useredit.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'myadmin/css/useradd.css' %}">
+{% endblock %}
+{% block myadmin_body %}
+	<!-- 主体开始 -->
+	<h3>
+		会员信息添加
+	</h3>
+	<form id="edit-profile" class="form-horizontal" method="post" action="{% url 'myadmin_usersupdate' %}">
+	{% csrf_token %}
+		{% for list in userslist %}
+		<fieldset>
+			<legend>添加信息</legend>
+			<input type="hidden" name="id" value="{{ list.id }}">
+			<div class="control-group">
+				<label class="control-label" for="input01">帐号</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.username }}" name="username" disabled="disabled" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">真实姓名</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.name }}" name="name" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">密码</label>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="input01" value="{{ list.passwd }}" name="passwd" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">确认密码</label>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="input01" value="{{ list.passwd }}" name="passwd2"  /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="optionsRadios1">性别</label>
+				<div class="controls">
+					<div class="radio">
+						{% if list.sex == 1 %}
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="1" checked />
+    						男
+  						</label>
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="0" />
+    						女
+  						</label>
+  						{% else %}
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="1" />
+    						男
+  						</label>
+  						<label>
+    						<input type="radio" name="sex" id="optionsRadios1" value="0" checked />
+    						女
+  						</label>
+  						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">收货地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.address }}" name="address"   />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.code }}" name="code"  /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.phone }}" name="phone" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">Email</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" value="{{ list.email }}" name="email" /><span></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="optionsRadios2">状态</label>
+				<div class="controls">
+					<div class="radio">
+						{% if list.state == 0 %}
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="0" checked />
+    						后台管理员
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="1" />
+    						启用
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="2" />
+    						禁用
+  						</label>
+  						{% elif list.state == 1 %}
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="0" />
+    						后台管理员
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="1" checked />
+    						启用
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="2" />
+    						禁用
+  						</label>
+  						{% else %}
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="0" />
+    						后台管理员
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="1" />
+    						启用
+  						</label>
+  						<label>
+    						<input type="radio" name="state" id="optionsRadios2" value="2" checked />
+    						禁用
+  						</label>
+  						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">修改</button><button type="reset" class="btn">重置</button>
+			</div>
+
+		</fieldset>
+		{% endfor %}
+	</form>
+	<!-- 主体结束 -->
+{% endblock %}
